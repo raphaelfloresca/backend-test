@@ -6,6 +6,8 @@ import { join } from 'path'
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ExercisesModule } from './exercises/exercises.module';
+import { CircuitsModule } from './circuits/circuits.module';
+import { ExerciseCircuitModule } from './exercise-circuit/exercise-circuit.module';
 
 @Module({
   imports: [
@@ -19,7 +21,10 @@ import { ExercisesModule } from './exercises/exercises.module';
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true
     }),
-    ExercisesModule],
+    ExercisesModule,
+    CircuitsModule,
+    ExerciseCircuitModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
