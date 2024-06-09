@@ -1,14 +1,42 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
+import { Repository } from 'typeorm';
 import { Exercise } from "./exercise.entity"
+import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class ExercisesService {
-  async findAll(): Promise<Exercise[]> {
-    const exercise = new Exercise()
-    exercise.id = 1
-    exercise.name = 'Squat'
-    exercise.imageURL = 'https://test.co'
+  constructor(
+    @InjectRepository(Exercise)
+    private exercisesRepository: Repository<Exercise>
+  ) { }
 
-    return [exercise]
+  async findAll(): Promise<Exercise[]> {
+    return this.exercisesRepository.find() // SELECT * exercises
+  }
+
+  async seedData(): Promise<void> {
+    const exercisesData = [
+      { name: 'Barbell Lunge (Left)', imageURL: 'barbell-lunge.jpg' },
+      { name: 'Barbell Lunge (Right)', imageURL: 'barbell-lunge.jpg' },
+      { name: 'Sumo Deadlift', imageURL: 'sumo-deadlift.jpg' },
+      { name: 'Cable Kickback (Left)', imageURL: 'cable-kickback.jpg' },
+      { name: 'Cable Kickback (Right)', imageURL: 'cable-kickback.jpg' },
+      { name: 'Dumbbell Shoulder Press', imageURL: 'dumbbell-shoulder-press.jpg' },
+      { name: 'Single Arm Cable Row (Left)', imageURL: 'single-arm-cable-row.jpg' },
+      { name: 'Single Arm Cable Row (Right)', imageURL: 'single-arm-cable-row.jpg' },
+      { name: 'Cable Seated Row', imageURL: 'cable-seated-row.jpg' },
+      { name: 'Dumbbell Jump Squat', imageURL: 'dumbbell-jump-squat.jpg' },
+      { name: 'Barbell Lunge', imageURL: 'barbell-lunge.jpg' },
+      { name: 'Plank With Stability Ball', imageURL: 'plank-with-stability-ball.jpg' },
+      { name: 'Glute Bridge Hold', imageURL: 'glute-bridge-hold.jpg' },
+      // Add more exercises as needed
+    ];
+
+    try {
+      await this.exercisesRepository.save(exercisesData);
+      Logger.log('Data seeded successfully');
+    } catch (error) {
+      Logger.error(`Error seeding data: ${error.message}`, error.stack);
+    }
   }
 }
