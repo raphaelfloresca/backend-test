@@ -7,7 +7,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ExercisesModule } from './exercises/exercises.module';
 import { CircuitsModule } from './circuits/circuits.module';
-import { ExerciseCircuitModule } from './exercise-circuit/exercise-circuit.module';
+import { ExerciseCircuitMappingsModule } from './exercise-circuit-mappings/exercise-circuit-mappings.module';
 
 @Module({
   imports: [
@@ -23,7 +23,7 @@ import { ExerciseCircuitModule } from './exercise-circuit/exercise-circuit.modul
     }),
     ExercisesModule,
     CircuitsModule,
-    ExerciseCircuitModule,
+    ExerciseCircuitMappingsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

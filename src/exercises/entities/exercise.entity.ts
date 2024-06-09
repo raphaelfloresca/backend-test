@@ -1,6 +1,6 @@
 import { Field, ObjectType, Int } from "@nestjs/graphql"
-import { Column, Entity, OneToMany, ManyToMany, JoinTable, PrimaryGeneratedColumn } from "typeorm"
-import { ExerciseCircuit } from "src/exercise-circuit/entities/exercise-circuit.entity"
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
+import { ExerciseCircuitMapping } from "src/exercise-circuit-mappings/entities/exercise-circuit-mapping.entity"
 
 @Entity()
 @ObjectType()
@@ -17,6 +17,7 @@ export class Exercise {
   @Field({ nullable: true })
   imageURL: string
 
-  @OneToMany(() => ExerciseCircuit, exerciseCircuit => exerciseCircuit.exercise)
-  exerciseCircuits: ExerciseCircuit[];
+  @OneToMany(() => ExerciseCircuitMapping, exerciseCircuitMapping => exerciseCircuitMapping.exercise)
+  @Field(type => [ExerciseCircuitMapping])
+  exerciseCircuitMappings: ExerciseCircuitMapping[]
 }

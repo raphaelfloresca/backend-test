@@ -15,9 +15,4 @@ export class ExercisesResolver {
   exercises(): Promise<Exercise[]> {
     return this.exercisesService.findAll()
   }
-
-  // @ResolveField(returns => [Circuit])
-  // circuits(@Parent() exercise: Exercise): Promise<Circuit[]> {
-  //   return this.exercisesService.getCircuits(exercise.circuitIds);
-  // }
 }

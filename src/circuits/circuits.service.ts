@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { In, Repository } from 'typeorm';
-import { Circuit } from './entities/circuit.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Circuit } from './entities/circuit.entity';
 
 @Injectable()
 export class CircuitsService {
@@ -24,13 +24,19 @@ export class CircuitsService {
     })
   }
 
+  // getCircuits(circuitIds: number[]): Promise<Circuit[]> {
+  //   return this.circuitsService.findSome(circuitIds)
+  // }
+
   async seedData(): Promise<void> {
     const circuitsData = [
-      { name: 'Warm Up' },
+      { name: 'Superset 1' },
       { name: 'Single 1' },
+      { name: 'Superset 2' },
       { name: 'Single 2' },
+      { name: 'Single 3' },
       { name: 'Triset' },
-      { name: 'Circuit' }
+      { name: 'Circuit' },
     ];
 
     try {
