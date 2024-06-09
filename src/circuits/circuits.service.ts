@@ -24,6 +24,17 @@ export class CircuitsService {
     })
   }
 
+  findRelatedExercises(id: number): Promise<Circuit[]> {
+    return this.circuitsRepository.find({
+      where: { id: id },
+      relations: {
+        exerciseCircuitMappings: {
+          exercise: true
+        },
+      },
+    })
+  }
+
   // getCircuits(circuitIds: number[]): Promise<Circuit[]> {
   //   return this.circuitsService.findSome(circuitIds)
   // }

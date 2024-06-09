@@ -18,6 +18,11 @@ export class ExerciseCircuitMapping {
   @Field(type => Int)
   circuitId: number
 
+
+  @Column({ nullable: true })
+  @Field(type => Int, { nullable: true })
+  swapWithExerciseId: number
+
   @Column()
   @Field()
   reps: string
@@ -31,10 +36,10 @@ export class ExerciseCircuitMapping {
   weight: string
 
   @ManyToOne(() => Circuit, circuit => circuit.exerciseCircuitMappings)
-  @Field(type => Int)
+  @Field(type => Circuit)
   circuit: Circuit
 
   @ManyToOne(() => Exercise, exercise => exercise.exerciseCircuitMappings)
-  @Field(type => Int)
+  @Field(type => Exercise)
   exercise: Exercise
 }

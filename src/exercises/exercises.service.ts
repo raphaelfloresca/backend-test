@@ -37,6 +37,7 @@ export class ExercisesService {
       { name: 'Cable Kickback (Right)', imageURL: 'cable-kickback.jpg' },
       { name: 'Dumbbell Shoulder Press', imageURL: 'dumbbell-shoulder-press.jpg' },
       { name: 'Single Arm Cable Row (Left)', imageURL: 'single-arm-cable-row.jpg' },
+      { name: 'Single Arm Barbell Row (Left)', imageURL: 'single-arm-barbell-row.jpg' },
       { name: 'Single Arm Cable Row (Right)', imageURL: 'single-arm-cable-row.jpg' },
       { name: 'Cable Seated Row', imageURL: 'cable-seated-row.jpg' },
       { name: 'Dumbbell Jump Squat', imageURL: 'dumbbell-jump-squat.jpg' },

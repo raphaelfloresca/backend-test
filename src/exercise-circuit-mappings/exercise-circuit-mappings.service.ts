@@ -24,10 +24,6 @@ export class ExerciseCircuitMappingsService {
     })
   }
 
-  // getCircuits(circuitIds: number[]): Promise<Circuit[]> {
-  //   return this.circuitsService.findSome(circuitIds)
-  // }
-
   async seedData(): Promise<void> {
     const exerciseCircuitMappingsData = [
       { exerciseId: 1, circuitId: 1, reps: "6-8 reps", sets: "2 sets" },
@@ -37,13 +33,14 @@ export class ExerciseCircuitMappingsService {
       { exerciseId: 5, circuitId: 3, reps: "15 reps", sets: "3 sets" },
       { exerciseId: 3, circuitId: 4, reps: "10-12 reps", sets: "4 sets", weight: "90kg" },
       { exerciseId: 6, circuitId: 5, reps: "8 reps", sets: "4 sets", weight: "18-25kg" },
-      { exerciseId: 7, circuitId: 6, reps: "10-12 reps", sets: "4 sets" },
-      { exerciseId: 8, circuitId: 6, reps: "10-12 reps", sets: "4 sets" },
-      { exerciseId: 9, circuitId: 6, reps: "6-8 reps", sets: "4 sets" },
-      { exerciseId: 10, circuitId: 7, reps: "1 rep", sets: "1 set" },
+      { exerciseId: 7, circuitId: 6, reps: "10-12 reps", sets: "4 sets", swapWithExerciseId: 8 },
+      { exerciseId: 8, circuitId: 6, reps: "6-8 reps", sets: "4 sets", swapWithExerciseId: 7 },
+      { exerciseId: 9, circuitId: 6, reps: "10-12 reps", sets: "4 sets" },
+      { exerciseId: 10, circuitId: 6, reps: "6-8 reps", sets: "4 sets" },
       { exerciseId: 11, circuitId: 7, reps: "1 rep", sets: "1 set" },
-      { exerciseId: 12, circuitId: 7, reps: "20 sec", sets: "1 set" },
-      { exerciseId: 13, circuitId: 7, reps: "40 sec", sets: "1 set" },
+      { exerciseId: 12, circuitId: 7, reps: "1 rep", sets: "1 set" },
+      { exerciseId: 13, circuitId: 7, reps: "20 sec", sets: "1 set" },
+      { exerciseId: 14, circuitId: 7, reps: "40 sec", sets: "1 set" },
     ];
 
     try {

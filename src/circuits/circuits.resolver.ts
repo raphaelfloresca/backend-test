@@ -15,4 +15,9 @@ export class CircuitsResolver {
   circuits(): Promise<Circuit[]> {
     return this.circuitsService.findAll()
   }
+
+  @ResolveField(returns => [Circuit])
+  async getExerciseCircuitMappings(@Parent() circuit: Circuit): Promise<Circuit[]> {
+    return this.circuitsService.findRelatedExercises(circuit.id);
+  }
 }
