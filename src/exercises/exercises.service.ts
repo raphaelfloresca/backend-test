@@ -1,13 +1,15 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { Repository } from 'typeorm';
-import { Exercise } from "./exercise.entity"
+import { In, Repository } from 'typeorm';
+import { Exercise } from './entities/exercise.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+// import { CircuitsService } from '../circuits/circuits.service';
+// import { Circuit } from '../circuits/entities/circuit.entity';
 
 @Injectable()
 export class ExercisesService {
   constructor(
     @InjectRepository(Exercise)
-    private exercisesRepository: Repository<Exercise>
+    private exercisesRepository: Repository<Exercise>,
   ) { }
 
   async findAll(): Promise<Exercise[]> {
@@ -17,6 +19,16 @@ export class ExercisesService {
   findOne(id: number): Promise<Exercise> {
     return this.exercisesRepository.findOneOrFail({ where: { id: id } })
   }
+
+  findSome(ids: number[]): Promise<Exercise[]> {
+    return this.exercisesRepository.find({
+      where: { id: In(ids) }
+    })
+  }
+
+  // getCircuits(circuitIds: number[]): Promise<Circuit[]> {
+  //   return this.circuitsService.findSome(circuitIds)
+  // }
 
   async seedData(): Promise<void> {
     const exercisesData = [

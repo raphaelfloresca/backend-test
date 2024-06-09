@@ -1,5 +1,5 @@
-import { Resolver, Query, Int, Args } from '@nestjs/graphql'
-import { Exercise } from './exercise.entity'
+import { Resolver, Query, Int, Args, ResolveField, Parent } from '@nestjs/graphql'
+import { Exercise } from './entities/exercise.entity'
 import { ExercisesService } from './exercises.service'
 
 @Resolver(of => Exercise)
@@ -15,4 +15,9 @@ export class ExercisesResolver {
   exercises(): Promise<Exercise[]> {
     return this.exercisesService.findAll()
   }
+
+  // @ResolveField(returns => [Circuit])
+  // circuits(@Parent() exercise: Exercise): Promise<Circuit[]> {
+  //   return this.exercisesService.getCircuits(exercise.circuitIds);
+  // }
 }
