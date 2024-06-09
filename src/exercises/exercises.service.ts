@@ -14,6 +14,10 @@ export class ExercisesService {
     return this.exercisesRepository.find() // SELECT * exercises
   }
 
+  findOne(id: number): Promise<Exercise> {
+    return this.exercisesRepository.findOneOrFail({ where: { id: id } })
+  }
+
   async seedData(): Promise<void> {
     const exercisesData = [
       { name: 'Barbell Lunge (Left)', imageURL: 'barbell-lunge.jpg' },
