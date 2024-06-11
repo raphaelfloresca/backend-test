@@ -24,10 +24,6 @@ export class ExercisesService {
     })
   }
 
-  // getCircuits(circuitIds: number[]): Promise<Circuit[]> {
-  //   return this.circuitsService.findSome(circuitIds)
-  // }
-
   async seedData(): Promise<void> {
     const exercisesData = [
       { name: 'Barbell Lunge (Left)', imageURL: 'barbell-lunge.jpg' },
