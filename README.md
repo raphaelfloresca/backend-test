@@ -101,4 +101,27 @@ This will return the following:
 }
 ```
 
-To query all circuits and circuit mappings, use `circuits` and `exerciseCircuitMappings`
+To query all circuits and circuit mappings, use `circuits` and `exerciseCircuitMappings`.
+
+For `circuits`, you may query the following fields:
+
+```
+  id
+  name
+```
+
+For `exerciseCircuitMappings`, you may query:
+
+```
+  id
+  exerciseId
+  circuitId
+  swapWithExerciseId
+  reps
+  sets
+  weight
+```
+
+### Data schema
+
+For more information on the schema, please refer to the schema and docs tabs on GraphQL playground.
