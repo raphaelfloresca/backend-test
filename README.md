@@ -8,7 +8,7 @@ Run `npm run start:dev` to start the development server. Once started, GraphQL P
 
 ### Query all
 
-To query all exercises, run:
+To query all exercises and all its fields, run in GraphQL playground:
 
 ```gql
 {
@@ -41,61 +41,7 @@ This will return the following:
         "name": "Sumo Deadlift",
         "imageURL": "sumo-deadlift.jpg"
       },
-      {
-        "id": 4,
-        "name": "Cable Kickback (Left)",
-        "imageURL": "cable-kickback.jpg"
-      },
-      {
-        "id": 5,
-        "name": "Cable Kickback (Right)",
-        "imageURL": "cable-kickback.jpg"
-      },
-      {
-        "id": 6,
-        "name": "Dumbbell Shoulder Press",
-        "imageURL": "dumbbell-shoulder-press.jpg"
-      },
-      {
-        "id": 7,
-        "name": "Single Arm Cable Row (Left)",
-        "imageURL": "single-arm-cable-row.jpg"
-      },
-      {
-        "id": 8,
-        "name": "Single Arm Barbell Row (Left)",
-        "imageURL": "single-arm-barbell-row.jpg"
-      },
-      {
-        "id": 9,
-        "name": "Single Arm Cable Row (Right)",
-        "imageURL": "single-arm-cable-row.jpg"
-      },
-      {
-        "id": 10,
-        "name": "Cable Seated Row",
-        "imageURL": "cable-seated-row.jpg"
-      },
-      {
-        "id": 11,
-        "name": "Dumbbell Jump Squat",
-        "imageURL": "dumbbell-jump-squat.jpg"
-      },
-      {
-        "id": 12,
-        "name": "Barbell Lunge",
-        "imageURL": "barbell-lunge.jpg"
-      },
-      {
-        "id": 13,
-        "name": "Plank With Stability Ball",
-        "imageURL": "plank-with-stability-ball.jpg"
-      },
-      {
-        "id": 14,
-        "name": "Glute Bridge Hold",
-        "imageURL": "glute-bridge-hold.jpg"
-      }
+      ...
     ]
   }
 }
@@ -122,6 +68,95 @@ For `exerciseCircuitMappings`, you may query:
   weight
 ```
 
-### Data schema
+## Query by ID
 
-For more information on the schema, please refer to the schema and docs tabs on GraphQL playground.
+To query circuits by ID, you may run:
+
+```gql
+{
+  getCircuit(id: 1) {
+    id
+    name
+  }
+}
+```
+
+which passes an `id` parameter for the particular circuit's ID you wish to query(1 in this example). Fields which can be queried here are the same as the fields detailed above.
+
+This returns:
+
+```json
+{
+  "data": {
+    "getCircuit": {
+      "id": 1,
+      "name": "Superset 1"
+    }
+  }
+}
+```
+
+To query exercises and exerciseCircuitMappings by ID, similarly use `getExercise` and `getExerciseCircuitMapping` respectively.
+
+### Getting exercise data for a given circuit
+
+Within `circuits`, you may this query:
+
+```gql
+{
+  getCircuit(id: 6) {
+    name
+    getExerciseCircuitMappings {
+      exerciseCircuitMappings {
+        sets
+        reps
+        weight
+        swapWithExerciseId
+        exercise {
+          id
+          name
+        }
+      }
+    }
+  }
+}
+```
+
+This returns the following
+
+```json
+{
+  "data": {
+    "getCircuit": {
+      "name": "Triset",
+      "getExerciseCircuitMappings": [
+        {
+          "exerciseCircuitMappings": [
+            {
+              "sets": "4 sets",
+              "reps": "10-12 reps",
+              "weight": null,
+              "swapWithExerciseId": 8,
+              "exercise": {
+                "id": 7,
+                "name": "Single Arm Cable Row (Left)"
+              }
+            },
+            ...
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
+## Data schema and types
+
+For more information on the schema and types, please refer to the schema and docs tabs on GraphQL playground.
+
+## Notes
+
+### COnsistent data re-seeding
+
+This service seeds test data upon startup. However, due to a limitation of SQLite, clearing the database and re-seeding means that the id fields are not reset back to 0. Therefore, to ensure a consistent experience, please delete the `:memory` file that is generated after running the service.
