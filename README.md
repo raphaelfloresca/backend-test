@@ -4,6 +4,10 @@
 
 Run `npm run start:dev` to start the development server. Once started, GraphQL Playground is accessible at `http://localhost:3000/graphql`.
 
+### If you run into any package resolution problems:
+
+Use `nvm` and the `latest` version to ensure that this works as expected. A Docker image will be the next step.
+
 ## Querying exercise, circuits, and mappings
 
 ### Query all
