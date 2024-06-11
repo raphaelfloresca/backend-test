@@ -81,7 +81,7 @@ To query circuits by ID, you may run:
 }
 ```
 
-which passes an `id` parameter for the particular circuit's ID you wish to query(1 in this example). Fields which can be queried here are the same as the fields detailed above.
+which takes an `id` parameter for the particular circuit's ID you wish to query (1 in this example). Fields which can be queried here are the same as the fields detailed above.
 
 This returns:
 
@@ -100,7 +100,7 @@ To query exercises and exerciseCircuitMappings by ID, similarly use `getExercise
 
 ### Getting exercise data for a given circuit
 
-Within `circuits`, you may this query:
+Within `circuits`, you may run this query:
 
 ```gql
 {
@@ -157,6 +157,6 @@ For more information on the schema and types, please refer to the schema and doc
 
 ## Notes
 
-### COnsistent data re-seeding
+### Consistent data re-seeding
 
 This service seeds test data upon startup. However, due to a limitation of SQLite, clearing the database and re-seeding means that the id fields are not reset back to 0. Therefore, to ensure a consistent experience, please delete the `:memory` file that is generated after running the service.
