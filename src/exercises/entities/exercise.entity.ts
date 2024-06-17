@@ -14,8 +14,8 @@ export class Exercise {
   name: string
 
   @Column({ nullable: true })
-  @Field({ nullable: true })
-  imageURL: string
+  @Field(type => Int, { nullable: true })
+  imageIndex: number
 
   @OneToMany(() => ExerciseCircuitMapping, exerciseCircuitMapping => exerciseCircuitMapping.exercise)
   @Field(type => [ExerciseCircuitMapping])

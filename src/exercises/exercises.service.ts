@@ -26,20 +26,20 @@ export class ExercisesService {
 
   async seedData(): Promise<void> {
     const exercisesData = [
-      { name: 'Barbell Lunge (Left)', imageURL: 'barbell-lunge.jpg' },
-      { name: 'Barbell Lunge (Right)', imageURL: 'barbell-lunge.jpg' },
-      { name: 'Sumo Deadlift', imageURL: 'sumo-deadlift.jpg' },
-      { name: 'Cable Kickback (Left)', imageURL: 'cable-kickback.jpg' },
-      { name: 'Cable Kickback (Right)', imageURL: 'cable-kickback.jpg' },
-      { name: 'Dumbbell Shoulder Press', imageURL: 'dumbbell-shoulder-press.jpg' },
-      { name: 'Single Arm Cable Row (Left)', imageURL: 'single-arm-cable-row.jpg' },
-      { name: 'Single Arm Barbell Row (Left)', imageURL: 'single-arm-barbell-row.jpg' },
-      { name: 'Single Arm Cable Row (Right)', imageURL: 'single-arm-cable-row.jpg' },
-      { name: 'Cable Seated Row', imageURL: 'cable-seated-row.jpg' },
-      { name: 'Dumbbell Jump Squat', imageURL: 'dumbbell-jump-squat.jpg' },
-      { name: 'Barbell Lunge', imageURL: 'barbell-lunge.jpg' },
-      { name: 'Plank With Stability Ball', imageURL: 'plank-with-stability-ball.jpg' },
-      { name: 'Glute Bridge Hold', imageURL: 'glute-bridge-hold.jpg' },
+      { name: 'Barbell Lunge (Left)' },
+      { name: 'Barbell Lunge (Right)' },
+      { name: 'Sumo Deadlift' },
+      { name: 'Cable Kickback (Left)' },
+      { name: 'Cable Kickback (Right)' },
+      { name: 'Dumbbell Shoulder Press' },
+      { name: 'Single Arm Cable Row (Left)', imageIndex: 0 },
+      { name: 'Single Arm Barbell Row (Left)', imageIndex: 1 },
+      { name: 'Single Arm Cable Row (Right)', imageIndex: 0 },
+      { name: 'Cable Seated Row', imageIndex: 2 },
+      { name: 'Dumbbell Jump Squat' },
+      { name: 'Barbell Lunge' },
+      { name: 'Plank With Stability Ball' },
+      { name: 'Glute Bridge Hold' },
       // Add more exercises as needed
     ];
 
